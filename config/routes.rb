@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :dashboard, only: [:index]
+    resources :listings do
+      put :approve, on: :member
+      put :reject, on: :member
+    end
+  end
+
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',
