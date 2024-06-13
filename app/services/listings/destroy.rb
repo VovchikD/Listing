@@ -6,7 +6,7 @@ module Listings
     end
 
     def self.call(listing:)
-      new(listing:).call
+      new(listing).call
     end
 
     def call
@@ -14,6 +14,7 @@ module Listings
         success_result(@listing)
       else
         failure_result(@listing)
+      end
     end
   end
 end

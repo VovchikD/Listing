@@ -28,6 +28,10 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+gem 'devise', '~> 4.9.4'
+gem 'rack-cors', '~> 2.0.2'
+gem 'devise-jwt', '~> 0.11.0'
+gem 'jsonapi-serializer', '~> 2.2'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -38,6 +42,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'pry', '~> 0.14.2'
 end
 
 group :development do

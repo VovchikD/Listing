@@ -1,5 +1,5 @@
 class Api::V1::ListingsController < ApplicationController
-  before_action :set_listing, only: %i[show destroy]
+  before_action :find_listing, only: %i[show destroy]
 
   def index
     if params[:status]
@@ -7,11 +7,11 @@ class Api::V1::ListingsController < ApplicationController
     else
       @listings = current_user.listings
     end
-    render json: @listings 
+    render json: @listings
   end
 
   def show
-    render json: @listing
+    render json: @listings
   end
 
   def new
@@ -30,7 +30,7 @@ class Api::V1::ListingsController < ApplicationController
   end
 
   def destroy
-    result = Listings::Destroy.call(listing: listing)
+    result = Listings::Destroy.call(listing: @listing)
 
     if result[:status] == :success
       redirect_to root_url
@@ -41,11 +41,11 @@ class Api::V1::ListingsController < ApplicationController
 
   private
 
-  def set_listing
-    @listing = current_user.listings.find(params[:id])
+  def find_listing
+    @listing ||=  Listing.find(params[:id])
   end
 
   def listing_params
-    params.require(:listing).permit(:brand, :model, :body_type, :trip, :color, :price, :fuel, :year, :engine_capacity, :phone_number, :name, :image, :status)
+    params.require(:listing).permit(:brand, :model, :body_type, :trip, :color, :price, :fuel, :year, :engine_capacity, :phone_number, :name)
   end
 end
