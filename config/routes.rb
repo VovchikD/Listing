@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :admin, path: 'admin', controllers: {
+  devise_for :admin, path: '', path_names: {
+    sign_in: 'admin',
+    registration: 'admin/sign_up'
+  }, controllers: {
     sessions: 'admin/sessions',
-    registration: 'admin/registrations'
+    registrations: 'admin/registrations'
   }
 
   namespace :admin do
-    resources :listings, only: [:index, :show] do
+    resources :listings do
       member do
-        patch :approve
-        patch :reject
+        post :approve
+        post :reject
       end
     end
   end

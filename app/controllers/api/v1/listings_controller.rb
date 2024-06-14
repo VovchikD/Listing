@@ -1,4 +1,5 @@
 class Api::V1::ListingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_listing, only: %i[show destroy]
 
   def index
