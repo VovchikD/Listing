@@ -1,0 +1,21 @@
+<h1>Pending Listings</h1>
+  <% if @listings.present? %>
+    <% @listings.each do |listing| %>
+      <li><h7>BRAND:</h7> <%= listing.brand %></li>
+      <li><h7>MODEL:</h7> <%= listing.model %></li>
+      <li><h7>TRIP:</h7> <%= listing.trip %></li>
+      <li><h7>COLOR:</h7> <%= listing.color %></li>
+      <li><h7>YEAR:</h7> <%= listing.year %></li>
+      <li><h7>FUEL:</h7> <%= listing.fuel %></li>
+      <li><h7>ENGINE:</h7> <%= listing.engine_capacity %></li>
+      <li><h7>NUMBER:</h7> <%= listing.phone_number %></li>
+      <li><h7>NAME:</h7> <%= listing.name %></li>
+      <li><h7>STATUS:</h7> <%= listing.status %></li>
+        <td>
+          <%= button_to 'Approve', approve_admin_listing_path(listing), method: :post %>
+          <%= button_to 'Reject', reject_admin_listing_path(listing), method: :post %>
+        </td>
+    <% end %>
+  <% else %>
+    <h1>Empty!</h1>
+  <% end %>
