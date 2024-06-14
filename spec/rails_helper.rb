@@ -1,5 +1,7 @@
 require 'spec_helper'
+require 'capybara/rspec'
 require 'factory_bot_rails'
+require 'selenium-webdriver'
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -18,4 +20,8 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include Devise::Test::IntegrationHelpers, type: :service
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include FactoryBot::Syntax::Methods
+  config.include Rails.application.routes.url_helpers
 end

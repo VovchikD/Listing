@@ -1,4 +1,4 @@
 --color
 --require spec_helper
---order rend
+--order random
 --format doc
