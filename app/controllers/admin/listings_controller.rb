@@ -1,8 +1,10 @@
-class Admin::DashboardController < ApplicationController
+class Admin::ListingsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_listing, only: [:show, :approve, :reject]
 
   def index
     @listings = Listing.where(status: :pending)
+    render template: 'listings/index'
   end
 
   def show

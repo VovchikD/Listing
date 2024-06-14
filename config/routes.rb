@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  devise_for :admin, path: 'admin', controllers: {
+    sessions: 'admin/sessions',
+    registration: 'admin/registrations'
+  }
+
   namespace :admin do
-    resources :dashboard, only: [:index]
-    resources :listings do
-      put :approve, on: :member
-      put :reject, on: :member
+    resources :listings, only: [:index, :show] do
+      member do
+        patch :approve
+        patch :reject
+      end
     end
   end
 
@@ -17,15 +23,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  devise_for :admins
-
   namespace :api do
     namespace :v1 do
       resources :listings, only: [:index, :show, :create, :destroy]
     end
   end
-
-  root 'api/v1/listings#index'
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
