@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin, path: '', path_names: {
     sign_in: 'admin',
-    registration: 'admin/sign_up'
+    registration: 'admin'
   }, controllers: {
     sessions: 'admin/sessions',
     registrations: 'admin/registrations'
@@ -31,6 +31,8 @@ Rails.application.routes.draw do
       resources :listings, only: [:index, :show, :create, :destroy]
     end
   end
+
+  root 'api/v1/listings#index'
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

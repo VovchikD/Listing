@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::V1::Users::SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
   include RackSessionsFix
 
   respond_to :json
@@ -15,6 +15,7 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
       }
     }, status: :ok
   end
+
   def respond_to_on_destroy
     if request.headers['Authorization'].present?
       jwt_payload = JWT.decode(request.headers['Authorization'].split(' ').last, Rails.application.credentials.devise_jwt_secret_key!).first

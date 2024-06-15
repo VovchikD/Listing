@@ -44,8 +44,11 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'pry', '~> 0.14.2'
   gem 'rspec-rails', '~> 6.0.4'
-  gem 'rspec', '~> 3.4'
+  gem 'rspec', '~> 3.13.0'
   gem 'factory_bot_rails', '~> 6.4.3'
+  gem 'capybara', '~> 3.40'
+  gem 'selenium-webdriver', '~> 4.4'
+  gem 'image_processing', '~> 1.12'
 end
 
 group :development do

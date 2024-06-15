@@ -8,11 +8,11 @@ class Api::V1::ListingsController < ApplicationController
     else
       @listings = current_user.listings
     end
-    render json: @listings
+    render json: @listings.to_json(except: :image)
   end
 
   def show
-    render json: @listings
+    render json: @listings.to_json(except: :image)
   end
 
   def new
@@ -47,6 +47,6 @@ class Api::V1::ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:brand, :model, :body_type, :trip, :color, :price, :fuel, :year, :engine_capacity, :phone_number, :name)
+    params.require(:listing).permit(:brand, :model, :body_type, :trip, :color, :price, :fuel, :year, :engine_capacity, :phone_number, :name, :image)
   end
 end
