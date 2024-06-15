@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Listings::Destroy, type: :service do
-  let(:listing) { create(:listing)}
+  let(:user) { create(:user) }
+  let(:listing) { create(:listing, user: user) }
 
   it 'when announcement is successfully destroy' do
     result = Listings::Destroy.call(listing: listing)

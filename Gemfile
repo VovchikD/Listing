@@ -48,6 +48,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.4.3'
   gem 'capybara', '~> 3.40'
   gem 'selenium-webdriver', '~> 4.4'
+  gem 'image_processing', '~> 1.12'
 end
 
 group :development do

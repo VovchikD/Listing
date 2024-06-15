@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'api/v1/listing#index'
+  root 'api/v1/listings#index'
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

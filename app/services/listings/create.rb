@@ -1,4 +1,3 @@
-
 module Listings
   class Create < BaseService
     def initialize(user, listing_params)
@@ -12,7 +11,9 @@ module Listings
 
     def call
       @listing = @user.listings.build(@listing_params)
+
       if @listing.save
+        @listing.image.attach(@listing_params[:image]) if @listing_params[:image].present?
         success_result(@listing)
       else
         failure_result(@listing)
