@@ -8,11 +8,11 @@ class Api::V1::ListingsController < ApplicationController
     else
       @listings = current_user.listings
     end
-    render json: @listings.to_json(except: :image)
+    render json: @listings
   end
 
   def show
-    render json: @listings.to_json(except: :image)
+    render json: @listings
   end
 
   def new

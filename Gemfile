@@ -49,6 +49,7 @@ group :development, :test do
   gem 'capybara', '~> 3.40'
   gem 'selenium-webdriver', '~> 4.4'
   gem 'image_processing', '~> 1.12'
+  gem 'mini_magick', '~> 4.12'
 end
 
 group :development do

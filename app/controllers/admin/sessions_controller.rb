@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  skip_before_action :verify_authenticity_token
-
   # GET /resource/sign_in
   def new
     super
