@@ -23,10 +23,10 @@ class Api::V1::ListingsController < ApplicationController
     result = Listings::Create.call(user: current_user, listing_params: listing_params)
 
     if result[:status] == :success
-      redirect_to root_url
+      render json: result[:status], status: :created
     else
       @listings = result[:record]
-      render :new
+      render json: @listings
     end
   end
 
@@ -34,7 +34,7 @@ class Api::V1::ListingsController < ApplicationController
     result = Listings::Destroy.call(listing: @listing)
 
     if result[:status] == :success
-      redirect_to root_url
+      render json: result[:status]
     else
       @listing = result[:record]
     end
