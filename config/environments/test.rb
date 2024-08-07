@@ -53,6 +53,18 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
+
+  config.force_ssl = false
+
+  config.action_dispatch.default_headers = ({
+    'Content-Security-Policy' => "default-src 'self' http: https:;\
+      font-src 'self' http: https: data:;\
+      img-src 'self' http: https: data: blob:;\
+      object-src 'self';\
+      script-src 'self' http: https: 'unsafe-inline' 'unsafe-eval';\
+      style-src 'self' http: https: 'unsafe-inline';\
+      frame-ancestors *"
+  })
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

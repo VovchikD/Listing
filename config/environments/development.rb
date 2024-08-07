@@ -60,6 +60,18 @@ Rails.application.configure do
 
   config.middleware.use ActionDispatch::Flash
 
+  config.force_ssl = false
+
+  config.action_dispatch.default_headers = ({
+    'Content-Security-Policy' => "default-src 'self' http: https:;\
+      font-src 'self' http: https: data:;\
+      img-src 'self' http: https: data: blob:;\
+      object-src 'self';\
+      script-src 'self' http: https: 'unsafe-inline' 'unsafe-eval';\
+      style-src 'self' http: https: 'unsafe-inline';\
+      frame-ancestors *"
+  })
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
