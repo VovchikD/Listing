@@ -50,6 +50,7 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 4.4'
   gem 'image_processing', '~> 1.12'
   gem 'mini_magick', '~> 4.12'
+  gem 'rswag', '~> 2.13'
 end
 
 group :development do
